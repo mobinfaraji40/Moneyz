@@ -16,7 +16,7 @@ source.exclude_dirs = .git,.github,.buildozer,bin,venv,__pycache__
 # python-bidi باید نسخه 0.4.2 (پایتونی خالص) باشد؛ نسخه‌های جدید با Rust نوشته شده‌اند
 # و روی python-for-android کامپایل نمی‌شوند.
 # openssl برای اتصال HTTPS (قیمت طلا و دلار) لازم است.
-requirements = python3,kivy==2.3.0,openssl,certifi,arabic-reshaper==3.0.0,python-bidi==0.4.2,jdatetime
+requirements = hostpython3==3.11.5,python3==3.11.5,kivy==2.3.0,openssl,certifi,arabic-reshaper==3.0.0,python-bidi==0.4.2,jdatetime
 
 # --- ظاهر ---
 orientation = portrait
@@ -38,6 +38,12 @@ android.archs = arm64-v8a, armeabi-v7a
 android.accept_sdk_license = True
 android.allow_backup = True
 android.enable_androidx = True
+
+# --- python-for-android ---
+# نسخه پایدار p4a (پایتون 3.11 می‌سازد و با Kivy 2.3.0 سازگار است).
+# بدون این خط، Buildozer شاخه master را می‌گیرد که الان پایتون 3.14 می‌سازد
+# و Kivy 2.3.0 روی آن کامپایل نمی‌شود.
+p4a.branch = v2024.01.21
 
 [buildozer]
 log_level = 2
